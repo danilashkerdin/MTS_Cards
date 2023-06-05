@@ -7,8 +7,14 @@ class Table:
     dropped_cards: list[Card]
     current: Card
 
+
+    def __init__(self):
+        self.clear_cards = Deck
+        self.dropped_cards = []
+        self.current = self.get_card()
+
     def get_card(self) -> Card:
-        if self.is_empty():
+        if self.is_empty:
             self.shuffle()
 
         return self.clear_cards.pop()
@@ -26,6 +32,7 @@ class Table:
     def drop_card(self, card: Card):
         self.dropped_cards.append(card)
 
+    @property
     def is_empty(self) -> bool:
         return len(self.clear_cards) <= 0
 
