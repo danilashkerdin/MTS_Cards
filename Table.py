@@ -1,4 +1,5 @@
 from Card import Card
+from Deck import Deck
 import random
 
 
@@ -7,9 +8,8 @@ class Table:
     dropped_cards: list[Card]
     current: Card
 
-
     def __init__(self):
-        self.clear_cards = Deck
+        self.clear_cards = Deck()
         self.dropped_cards = []
         self.current = self.get_card()
 

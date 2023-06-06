@@ -1,7 +1,7 @@
-class UnoGame:
+class MTSGame:
 
-    def __init__(self, ):
+    def __init__(self):
+        pass
         # players
         # table
-
         # валидация карт

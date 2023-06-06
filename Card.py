@@ -1,25 +1,25 @@
-import enum
+from enum import StrEnum, IntEnum
 
 
-class Color(enum.StrEnum):
+class Color(StrEnum):
     red = "red"
     yellow = "yellow"
     green = "green"
     blue = "blue"
 
 
-class Action(enum.StrEnum):
+class Action(StrEnum):
     reverse = "reverse"
     get_2_cards = "get_2_cards"
     skip = "skip"
 
 
-class SpecialAction(enum.StrEnum):
+class SpecialAction(StrEnum):
     get_4_cards = "get_4_cards"
     # change_color = "change_color"
 
 
-class Digit(enum.IntEnum):
+class Digit(IntEnum):
     zero = 0  # карт с нулями в колоде уно - 4шт, а всех остальных цифр - по 8
     one = 1
     two = 2
