@@ -16,7 +16,7 @@ class Action(StrEnum):
 
 class SpecialAction(StrEnum):
     get_4_cards = "get_4_cards"
-    # change_color = "change_color"
+    change_color = "change_color"
 
 
 class Digit(IntEnum):
@@ -34,7 +34,7 @@ class Digit(IntEnum):
 
 class Card:
 
-    def render(self):
+    def render(self, *args):
         pass
 
 
@@ -43,7 +43,14 @@ class ColoredCard(Card):
     color: Color
     value: Action | Digit | None
 
+    def __init__(self, color, value):
+        self.color = color
+        self.value = value
+
 
 class SpecialCard(Card):
     # всегда меняет цвет
     actions: SpecialAction | None
+
+    def __init__(self, actions):
+        self.actions = actions

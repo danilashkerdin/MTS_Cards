@@ -1,5 +1,4 @@
-from Card import Card
-from Deck import Deck
+from Card import Card, SpecialCard, ColoredCard, Color, Digit, SpecialAction, Action
 import random
 
 
@@ -9,14 +8,16 @@ class Table:
     current: Card
 
     def __init__(self):
-        self.clear_cards = Deck()
-        self.dropped_cards = []
+        self.clear_cards = [ColoredCard(x, y) for x in Color for y in Digit] + \
+                           [ColoredCard(x, y) for x in Color for y in Digit if y != 0] + \
+                           2 * [ColoredCard(x, y) for x in Color for y in Action] + \
+                           [SpecialCard(x) for x in SpecialAction]
         self.current = self.get_card()
+        self.dropped_cards = [self.current]
 
     def get_card(self) -> Card:
         if self.is_empty:
             self.shuffle()
-
         return self.clear_cards.pop()
 
     def get_cards(self, n: int) -> list[Card]:
@@ -40,3 +41,12 @@ class Table:
         self.clear_cards += self.dropped_cards
         self.dropped_cards.clear()
         random.shuffle(self.clear_cards)
+
+    def validate(self):
+        # some check of current_card + dropped_card[-1]
+        pass
+
+
+a = [ColoredCard(x, y) for x in Color for y in Digit if y != 0]
+for i in a:
+    print(i.value, i.color)
